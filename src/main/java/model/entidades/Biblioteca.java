@@ -10,19 +10,23 @@ public class Biblioteca {
     private final AlunoDAO alunoDAO = new AlunoDAO();
     private final EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
 
-    public void addLivro(Livro livro) {
+    public boolean addLivro(Livro livro) {
         try {
             livroDAO.inserir(livro);
+            return true;
         } catch (SQLException e) {
             System.err.println("Erro ao cadastrar livro: " + e.getMessage());
+            return false;
         }
     }
 
-    public void addAluno(Aluno aluno) {
+    public boolean addAluno(Aluno aluno) {
         try {
             alunoDAO.inserir(aluno);
+            return true;
         } catch (SQLException e) {
             System.err.println("Erro ao cadastrar aluno: " + e.getMessage());
+            return false;
         }
     }
 
@@ -35,7 +39,7 @@ public class Biblioteca {
         }
     }
 
-    public Aluno pesquisarAluno(int matricula) {
+    public Aluno pesquisarAluno(long matricula) {
         try {
             return alunoDAO.buscarPorMatricula(matricula);
         } catch (SQLException e) {
