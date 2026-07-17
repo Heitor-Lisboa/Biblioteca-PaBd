@@ -4,13 +4,13 @@ public class Aluno {
 
     private int id;
     private String nome;
-    private int matricula;
+    private long matricula;
 
-    public Aluno(String nome, int matricula) {
+    public Aluno(String nome, long matricula) {
         this(0, nome, matricula);
     }
 
-    public Aluno(int id, String nome, int matricula) {
+    public Aluno(int id, String nome, long matricula) {
         this.id = id;
         this.nome = nome;
         this.matricula = matricula;
@@ -28,7 +28,7 @@ public class Aluno {
         return nome;
     }
 
-    public int getMatricula() {
+    public long getMatricula() {
         return matricula;
     }
 
