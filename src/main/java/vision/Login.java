@@ -49,9 +49,9 @@ public class Login extends JFrame {
             return;
         }
 
-        int matricula;
+        long matricula;
         try {
-            matricula = Integer.parseInt(matriculaText);
+            matricula = Long.parseLong(matriculaText);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Matrícula deve ser um número.");
             return;
@@ -60,7 +60,11 @@ public class Login extends JFrame {
         Aluno aluno = biblioteca.pesquisarAluno(matricula);
         if (aluno == null) {
             aluno = new Aluno(nome, matricula);
-            biblioteca.addAluno(aluno);
+            if (!biblioteca.addAluno(aluno)) {
+                JOptionPane.showMessageDialog(this,
+                        "Não foi possível cadastrar o aluno. Verifique a conexão com o banco.");
+                return;
+            }
         }
 
         dispose();
