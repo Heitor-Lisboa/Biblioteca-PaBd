@@ -11,7 +11,7 @@ public class AlunoDAO {
         try (Connection con = Conexao.conectar();
              PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, aluno.getNome());
-            stmt.setInt(2, aluno.getMatricula());
+            stmt.setLong(2, aluno.getMatricula());
             stmt.executeUpdate();
 
             try (ResultSet rs = stmt.getGeneratedKeys()) {
@@ -22,11 +22,11 @@ public class AlunoDAO {
         }
     }
 
-    public Aluno buscarPorMatricula(int matricula) throws SQLException {
+    public Aluno buscarPorMatricula(long matricula) throws SQLException {
         String sql = "SELECT * FROM aluno WHERE matricula = ?";
         try (Connection con = Conexao.conectar();
              PreparedStatement stmt = con.prepareStatement(sql)) {
-            stmt.setInt(1, matricula);
+            stmt.setLong(1, matricula);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     return mapear(rs);
@@ -50,6 +50,6 @@ public class AlunoDAO {
     }
 
     private Aluno mapear(ResultSet rs) throws SQLException {
-        return new Aluno(rs.getInt("id"), rs.getString("nome"), rs.getInt("matricula"));
+        return new Aluno(rs.getInt("id"), rs.getString("nome"), rs.getLong("matricula"));
     }
 }
