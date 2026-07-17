@@ -132,7 +132,12 @@ public class Principal extends JFrame {
             return;
         }
 
-        biblioteca.addLivro(new Livro(titulo.trim(), autor.trim(), isbn, qtd));
-        JOptionPane.showMessageDialog(this, "Livro cadastrado com sucesso!");
+        boolean ok = biblioteca.addLivro(new Livro(titulo.trim(), autor.trim(), isbn, qtd));
+        if (ok) {
+            JOptionPane.showMessageDialog(this, "Livro cadastrado com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "Não foi possível cadastrar o livro. Verifique a conexão com o banco (ISBN duplicado?).");
+        }
     }
 }
