@@ -86,4 +86,10 @@ Ou execute a classe `vision.Login` diretamente pela sua IDE.
 
 ## Autores
 
-- Grupo 4 — PaBd
+### Grupo 4
+- Heitor Lisboa
+- Gabriel Endrel
+- Maria Eduarda
+- Anny Gabriele
+- José Valesson
+- Maria Clara
